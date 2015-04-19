@@ -10,8 +10,8 @@ require_once dirname(__FILE__) . '/twitch-api.php';
 function jss_tss_sidebar_widget($params, $live)
 {
 ?>
-<aside id="twitch-stream-status" class="widget widget_twitch_stream_status">
-<h2 class="widget-title">Live Broadcasts</h2>
+<div class="Side-Column-Box">
+<h3>Live Broadcasts</h3>
 <ul id="live-broadcasts" style="list-style: none;">
 <?php
   foreach ($live as $c)
@@ -27,8 +27,7 @@ function jss_tss_sidebar_widget($params, $live)
   }
 ?>
 </ul>
-</h2>
-</aside>
+</div>
 <?php
 }
 
