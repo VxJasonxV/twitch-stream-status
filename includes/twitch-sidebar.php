@@ -11,7 +11,10 @@ function jss_tss_sidebar_widget($params, $live)
 {
 ?>
 <div class="Side-Column-Box">
-<h3>Live Broadcasts</h3>
+<h3>
+  <span>Live Broadcasts</span>
+</h3>
+<div>
 <ul id="live-broadcasts" style="list-style: none;">
 <?php
   foreach ($live as $c)
@@ -27,6 +30,7 @@ function jss_tss_sidebar_widget($params, $live)
   }
 ?>
 </ul>
+</div>
 </div>
 <?php
 }
