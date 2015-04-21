@@ -3,6 +3,7 @@ defined('ABSPATH') or die("No script kiddies please!");
 
 function jss_tss_retrieve_user_status($user)
 {
+  global $wp_version;
   $url = "https://api.twitch.tv/kraken/users/${user}";
   $args = array
   (
@@ -30,6 +31,7 @@ function jss_tss_retrieve_user_status($user)
 
 function jss_tss_retrieve_stream_status($user)
 {
+  global $wp_version;
   $url = "https://api.twitch.tv/kraken/streams/${user}";
   $args = array
   (
