@@ -9,8 +9,8 @@ function jss_tss_retrieve_user_status($user)
     'timeout'     => 5,
     'redirection' => 1,
     'httpversion' => '1.0',
-    'user-agent'  => "WordPress/${wp_version}; " . get_bloginfo( 'url' ) . '; Twitch Multicaster Status Widget/0.1 (vxjasonxv@gmail.com)',
-    'blocking'    => true,
+    'user-agent'  => "WordPress/${wp_version}; " . get_bloginfo( 'url' ) . '; Twitch Stream Status/0.1 (https://github.com/VxJasonxV/twitch-stream-status)',
+    'blocking'    => false,
     'headers'     => array(),
     'cookies'     => array(),
     'body'        => null,
@@ -21,7 +21,11 @@ function jss_tss_retrieve_user_status($user)
     'filename'    => null
   );
 
-  return wp_remote_get($url, $args);
+  $response = wp_remote_get($url, $args);
+  if ( !is_wp_error( $response ) )
+  {
+    return $response;
+  }
 }
 
 function jss_tss_retrieve_stream_status($user)
@@ -32,8 +36,8 @@ function jss_tss_retrieve_stream_status($user)
     'timeout'     => 5,
     'redirection' => 1,
     'httpversion' => '1.0',
-    'user-agent'  => "WordPress/${wp_version}; " . get_bloginfo( 'url' ) . '; Twitch Multicaster Status Widget/0.1 (vxjasonxv@gmail.com)',
-    'blocking'    => true,
+    'user-agent'  => "WordPress/${wp_version}; " . get_bloginfo( 'url' ) . '; Twitch Stream Status/0.1 (https://github.com/VxJasonxV/twitch-stream-status)',
+    'blocking'    => false,
     'headers'     => array(),
     'cookies'     => array(),
     'body'        => null,
@@ -44,5 +48,9 @@ function jss_tss_retrieve_stream_status($user)
     'filename'    => null
   );
 
-  return wp_remote_get($url, $args);
+  $response = wp_remote_get($url, $args);
+  if ( !is_wp_error( $response ) )
+  {
+    return $response;
+  }
 }
