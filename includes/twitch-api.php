@@ -3,6 +3,7 @@ defined('ABSPATH') or die("No script kiddies please!");
 
 function jss_tss_retrieve_user_status($user)
 {
+  global $wp_version;
   $url = "https://api.twitch.tv/kraken/users/${user}";
   $args = array
   (
@@ -10,7 +11,7 @@ function jss_tss_retrieve_user_status($user)
     'redirection' => 1,
     'httpversion' => '1.0',
     'user-agent'  => "WordPress/${wp_version}; " . get_bloginfo( 'url' ) . '; Twitch Stream Status/0.1 (https://github.com/VxJasonxV/twitch-stream-status)',
-    'blocking'    => false,
+    'blocking'    => true,
     'headers'     => array(),
     'cookies'     => array(),
     'body'        => null,
@@ -22,14 +23,16 @@ function jss_tss_retrieve_user_status($user)
   );
 
   $response = wp_remote_get($url, $args);
-  if ( !is_wp_error( $response ) )
+  if ( is_wp_error( $response ) )
   {
-    return $response;
+    continue;
   }
+  return $response;
 }
 
 function jss_tss_retrieve_stream_status($user)
 {
+  global $wp_version;
   $url = "https://api.twitch.tv/kraken/streams/${user}";
   $args = array
   (
@@ -37,7 +40,7 @@ function jss_tss_retrieve_stream_status($user)
     'redirection' => 1,
     'httpversion' => '1.0',
     'user-agent'  => "WordPress/${wp_version}; " . get_bloginfo( 'url' ) . '; Twitch Stream Status/0.1 (https://github.com/VxJasonxV/twitch-stream-status)',
-    'blocking'    => false,
+    'blocking'    => true,
     'headers'     => array(),
     'cookies'     => array(),
     'body'        => null,
@@ -49,8 +52,9 @@ function jss_tss_retrieve_stream_status($user)
   );
 
   $response = wp_remote_get($url, $args);
-  if ( !is_wp_error( $response ) )
+  if ( is_wp_error( $response ) )
   {
-    return $response;
+    continue;
   }
+  return $response;
 }
