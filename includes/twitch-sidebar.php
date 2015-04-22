@@ -50,14 +50,15 @@ if( !empty($casters_setting) )
 
     if( $s->{'stream'}->{'game'} != NULL )
     {
-      $game = ' playing ' . $s->{'stream'}->{'game'};
+      $game = ' playing ' . $s->{'stream'}->{'game'} . ' for ' . $s->{'stream'}->{'viewers'} . ' viewer';
+      if ($s->{'stream'}->{'viewers'} != 1)
+      { $game .= 's'; }
     }
     else
     {
       $game = ' is currently live';
     }
     array_push($live, array('caster' => $c, 'game' => $game));
-    $i++;
   }
 
   if(!empty($live))
