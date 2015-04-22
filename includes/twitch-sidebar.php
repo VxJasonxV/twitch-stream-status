@@ -56,7 +56,6 @@ if( !empty($casters_setting) )
       $game = ' is currently live';
     }
     array_push($live, array('caster' => $c, 'game' => $game));
-    $i++;
   }
 
   if(!empty($live))
